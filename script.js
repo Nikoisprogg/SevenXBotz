@@ -1,5 +1,6 @@
-// === 1. Floating WhatsApp Button - Hide/Show on Scroll ===
+// Floating WhatsApp Button - Hide/Show on Scroll
 const floatingBtn = document.querySelector(".floating-whatsapp");
+
 let lastScrollTop = 0;
 
 window.addEventListener("scroll", () => {
@@ -20,25 +21,21 @@ window.addEventListener("scroll", () => {
 
   lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
 });
-
-
-// === 2. Background Music Control ===
+// Ambil elemen audio dan tombol
 const bgMusic = document.getElementById("bg-music");
 const musicBtn = document.getElementById("music-btn");
 
 // Fungsi untuk memulai musik (dipicu oleh klik pengguna)
 function startMusic() {
-  bgMusic.play()
-    .then(() => {
-      console.log("Musik dimulai!");
-      musicBtn.textContent = "🔊 Musik Sedang Diputar";
-      musicBtn.style.backgroundColor = "#2ecc71";
-    })
-    .catch(err => {
-      console.log("Autoplay dibatasi:", err);
-      musicBtn.textContent = "🔇 Gagal Memutar (Klik Lagi)";
-      musicBtn.style.backgroundColor = "#e74c3c";
-    });
+  bgMusic.play().then(() => {
+    console.log("Musik dimulai!");
+    musicBtn.textContent = "🔊 Musik Sedang Diputar";
+    musicBtn.style.backgroundColor = "#2ecc71";
+  }).catch(err => {
+    console.log("Autoplay dibatasi:", err);
+    musicBtn.textContent = "🔇 Gagal Memutar (Klik Lagi)";
+    musicBtn.style.backgroundColor = "#e74c3c";
+  });
 
   // Hapus event listener setelah dijalankan sekali
   document.body.removeEventListener("click", startMusic);
@@ -49,7 +46,7 @@ function startMusic() {
 document.body.addEventListener("click", startMusic);
 musicBtn.addEventListener("click", startMusic);
 
-// Toggle mute/unmute saat tombol diklik
+// Toggle mute/unmute saat tombol diklik lagi
 musicBtn.addEventListener("click", () => {
   if (bgMusic.muted) {
     bgMusic.muted = false;
@@ -60,10 +57,8 @@ musicBtn.addEventListener("click", () => {
     musicBtn.textContent = "🔇 Musik Dibisukan";
     musicBtn.style.backgroundColor = "#f39c12";
   }
-});
 
-
-// === 3. Snow Effect - Create Falling Snowflakes ===
+  // Fungsi untuk membuat partikel salju
 function createSnowflakes(count) {
   const container = document.getElementById('snow-container');
   
@@ -72,24 +67,24 @@ function createSnowflakes(count) {
     snowflake.classList.add('snowflake');
     
     // Ukuran partikel salju acak
-    const size = Math.random() * 4 + 2; // 2–6px
+    const size = Math.random() * 4 + 2; // Ukuran antara 2-6 pixel
     snowflake.style.width = `${size}px`;
     snowflake.style.height = `${size}px`;
     
-    // Kecepatan jatuh acak
-    const duration = Math.random() * 3 + 2; // 2–5 detik
+    // Kecepatan jatuh salju acak
+    const duration = Math.random() * 3 + 2; // Durasi animasi antara 2-5 detik
     snowflake.style.animationDuration = `${duration}s`;
     
-    // Posisi horizontal acak
+    // Posisi awal acak
     const initialPosition = Math.random() * window.innerWidth;
     snowflake.style.left = `${initialPosition}px`;
     
-    // Tambahkan ke kontainer
     container.appendChild(snowflake);
   }
 }
 
-// Buat salju saat halaman dimuat
-document.addEventListener("DOMContentLoaded", () => {
-  createSnowflakes(100); // 100 partikel salju
+// Hapus partikel salju setelah animasi selesai
+document.addEventListener('DOMContentLoaded', () => {
+  createSnowflakes(100); // Buat 100 partikel salju
+});
 });
