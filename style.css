@@ -251,4 +251,26 @@ p {
   transform: translateY(100px);
   opacity: 0;
 }
+
+  /* Music Button */
+.music-button {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px 16px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.music-button:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
 }
