@@ -57,4 +57,35 @@ musicBtn.addEventListener("click", () => {
     musicBtn.textContent = "🔇 Musik Dibisukan";
     musicBtn.style.backgroundColor = "#f39c12";
   }
+
+  // Fungsi untuk membuat partikel salju
+function createSnowflakes(count) {
+  const container = document.getElementById('snow-container');
+  
+  for (let i = 0; i < count; i++) {
+    const snowflake = document.createElement('div');
+    snowflake.classList.add('snowflake');
+    
+    // Ukuran partikel salju acak
+    const size = Math.random() * 4 + 2; // Ukuran antara 2-6 pixel
+    snowflake.style.width = `${size}px`;
+    snowflake.style.height = `${size}px`;
+    
+    // Kecepatan jatuh salju acak
+    const duration = Math.random() * 3 + 2; // Durasi animasi antara 2-5 detik
+    snowflake.style.animationDuration = `${duration}s`;
+    
+    // Posisi awal acak
+    const initialPosition = Math.random() * window.innerWidth;
+    snowflake.style.left = `${initialPosition}px`;
+    
+    container.appendChild(snowflake);
+  }
+}
+
+// Hapus partikel salju setelah animasi selesai
+document.addEventListener('DOMContentLoaded', () => {
+  createSnowflakes(100); // Buat 100 partikel salju
 });
+});
+
